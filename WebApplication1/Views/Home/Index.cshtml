@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="~/css/bil.css">
+    <title>Form</title>
+</head>
+<body>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="tc-kimlik-no">TC Kimlik No *</label>
+            <input type="text" id="tc-kimlik-no" name="tc-kimlik-no">
+        </div>
+
+        <div class="form-group">
+            <label for="first-name">Adı *</label>
+            <input type="text" id="first-name" name="first-name">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Soyadı *</label>
+            <input type="text" id="last-name" name="last-name">
+        </div>
+
+        <div class="form-group">
+            <label for="mother-name">Ana Adı</label>
+            <input type="text" id="mother-name" name="mother-name">
+        </div>
+        <div class="form-group">
+            <label for="father-name">Baba Adı</label>
+            <input type="text" id="father-name" name="father-name">
+        </div>
+
+        <div class="form-group">
+            <label for="blood-type">meslek</label>
+            <select id="blood-type" name="blood-type">
+                <option value="b-rh+">###</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="email">E-Posta *</label>
+            <input type="email" id="email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="nationality">Uyruk *</label>
+            <select id="nationality" name="nationality">
+                <option value="Chad"> turkye</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Cinsiyet *</label>
+            <select id="gender" name="gender">
+                <option value="male">Erkek</option>
+            </select>
+        </div>
+
+
+
+
+        <div class="form-group">
+            <button type="submit">Başvurumu Gönder</button>
+        </div>
+    </form>
+</body>
+</html>

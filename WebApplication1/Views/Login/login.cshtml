@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şırnak Üniversitesi</title>
+    <link rel="stylesheet" href="~/css/login1.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <img src="img.jpg" alt="Şırnak Üniversitesi">
+        </div>
+
+        <h2>Gözetmen Girişi</h2>
+        <form action="yenleme.html" method="post">
+            <div class="input-group">
+                <input type="text" placeholder="TC No" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Şifre" required>
+            </div>
+            <div class="input-group captcha-group">
+                <input type="text" placeholder="Güvenlik Kodu" required>
+                <div class="captcha">
+                    <img src="" alt="">
+                    <button type="button" class="refresh-captcha">&#x21bb;</button>
+                </div>
+            </div>
+            <button type="submit">GİRİŞ</button>
+        </form>
+        <a href="sifre.html" class="forgot-password">Şifremi Unuttum</a>
+    </div>
+</body>
+</html>
