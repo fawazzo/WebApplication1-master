@@ -5,31 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Şırnak Üniversitesi</title>
     <link rel="stylesheet" href="~/css/login1.css">
+    <style>
+        .error-message {
+            color: red;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="login-container">
         <div class="logo">
-            <img src="img.jpg" alt="Şırrrrrnak Üniversitesi">
+            <img src="img.jpg" alt="Şırnak Üniversitesi">
         </div>
 
-        <h2>Gözetmen Girişi</h2>
-        <form action="yenleme.html" method="post">
+        <h2>Göztmen Girişi</h2>
+        <form id="login-form" action="yenleme.html" method="post">
             <div class="input-group">
-                <input type="text" placeholder="TC No" required>
+                <input type="text" id="tc-no" placeholder="TC No" required>
+                <div class="error-message" id="tc-no-error">Lütfen geçerli bir TC girin.</div>
             </div>
             <div class="input-group">
                 <input type="password" placeholder="Şifre" required>
             </div>
             <div class="input-group captcha-group">
-                <input type="text" placeholder="Güvenlik Kodu" required>
+                <input type="text" id="captcha-input" placeholder="Güvenlik Kodu" required>
                 <div class="captcha">
-                    <img src="" alt="">
-                    <button type="button" class="refresh-captcha">&#x21bb;</button>
+                    <span id="captcha-code" class="captcha-code"></span>
+                    <button type="button" class="refresh-captcha" id="refresh-captcha">&#x21bb;</button>
                 </div>
             </div>
             <button type="submit">GİRİŞ</button>
         </form>
         <a href="sifre.html" class="forgot-password">Şifremi Unuttum</a>
     </div>
+
+    <script>
+        function generateCaptcha() {
+            var captcha = '';
+            for (var i = 0; i < 6; i++) {
+                captcha += Math.floor(Math.random() * 10);
+            }
+            return captcha;
+        }
+
+        function setCaptcha() {
+            var captchaCode = generateCaptcha();
+            document.getElementById('captcha-code').innerText = captchaCode;
+        }
+
+        document.getElementById('refresh-captcha').addEventListener('click', function () {
+            setCaptcha();
+        });
+
+        document.getElementById('tc-no').addEventListener('input', function (event) {
+            var input = event.target.value;
+            var errorMessage = document.getElementById('tc-no-error');
+            var isValid = /^\d{11}$/.test(input); // Regex to check if the input is exactly 11 digits
+
+            if (!isValid) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        document.getElementById('login-form').addEventListener('submit', function (event) {
+            var tcNo = document.getElementById('tc-no').value;
+            var captchaInput = document.getElementById('captcha-input').value;
+            var captchaCode = document.getElementById('captcha-code').innerText;
+
+            if (!/^\d{11}$/.test(tcNo)) {
+                event.preventDefault(); // Prevent form submission
+                alert('Lütfen geçerli bir TC numarası girin. (11 haneli)');
+            } else if (captchaInput !== captchaCode) {
+                event.preventDefault(); // Prevent form submission
+                alert('Güvenlik kodu yanlış.');
+                setCaptcha(); // Change the captcha
+            }
+        });
+
+        // Initialize captcha on page load
+        window.onload = setCaptcha;
+    </script>
 </body>
 </html>
