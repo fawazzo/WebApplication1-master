@@ -1,5 +1,7 @@
+@model WebApplication1.Models.LoginModel
+
 @{
-    ViewData["Title"] = "login";
+    ViewData["Title"] = "Login";
 }
 <!DOCTYPE html>
 <html lang="tr">
@@ -16,13 +18,13 @@
         </div>
 
         <h2>Göztmen Girişi</h2>
-        <form id="login-form" action="yenleme.html" method="post">
+        <form id="login-form" asp-action="Login" method="post">
             <div class="input-group">
-                <input type="text" id="tc-no" placeholder="TC No" required>
+                <input type="text" id="tc-no" name="TcNo" placeholder="TC No" required>
                 <div class="error-message" id="tc-no-error">Lütfen geçerli bir TC girin.</div>
             </div>
             <div class="input-group">
-                <input type="password" placeholder="Şifre" required>
+                <input type="password" name="Password" placeholder="Şifre" required>
             </div>
             <div class="input-group captcha-group">
                 <input type="text" id="captcha-input" placeholder="Güvenlik Kodu" required>
@@ -66,6 +68,9 @@
             }
         });
 
+<<<<<<< HEAD
+        document.getElement
+=======
         document.getElementById('login-form').addEventListener('submit', function (event) {
             var tcNo = document.getElementById('tc-no').value;
             var captchaInput = document.getElementById('captcha-input').value;
@@ -86,3 +91,4 @@
     </script>
 </body>
 </html>
+>>>>>>> e590b3ccfe36ca18ccaabd4de42e150d98d4e3f2
