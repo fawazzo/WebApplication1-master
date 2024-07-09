@@ -8,17 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Şırnak Üniversitesi</title>
     <link rel="stylesheet" href="~/css/login1.css">
-    <style>
-        .error-message {
-            color: red;
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <div class="login-container">
         <div class="logo">
-            <img src="img.jpg" alt="Şırnak Üniversitesi">
+            <img src="~/imge/img.jpg" alt="Şırnak Üniversitesi">
         </div>
 
         <h2>Göztmen Girişi</h2>
@@ -44,16 +38,16 @@
 
     <script>
         function generateCaptcha() {
-            var captcha = '';
-            for (var i = 0; i < 6; i++) {
-                captcha += Math.floor(Math.random() * 10);
-            }
-            return captcha;
+            var num1 = Math.floor(Math.random() * 9) + 1; // Generate a number between 1 and 9
+            var num2 = Math.floor(Math.random() * 90) + 10; // Generate a number between 10 and 99
+            var captcha = num1 + " + " + num2;
+            return { code: captcha, result: num1 + num2 };
         }
 
         function setCaptcha() {
-            var captchaCode = generateCaptcha();
-            document.getElementById('captcha-code').innerText = captchaCode;
+            var captchaData = generateCaptcha();
+            document.getElementById('captcha-code').innerText = captchaData.code;
+            document.getElementById('captcha-code').setAttribute('data-result', captchaData.result);
         }
 
         document.getElementById('refresh-captcha').addEventListener('click', function () {
@@ -75,12 +69,12 @@
         document.getElementById('login-form').addEventListener('submit', function (event) {
             var tcNo = document.getElementById('tc-no').value;
             var captchaInput = document.getElementById('captcha-input').value;
-            var captchaCode = document.getElementById('captcha-code').innerText;
+            var captchaResult = document.getElementById('captcha-code').getAttribute('data-result');
 
             if (!/^\d{11}$/.test(tcNo)) {
                 event.preventDefault(); // Prevent form submission
                 alert('Lütfen geçerli bir TC numarası girin. (11 haneli)');
-            } else if (captchaInput !== captchaCode) {
+            } else if (parseInt(captchaInput) !== parseInt(captchaResult)) {
                 event.preventDefault(); // Prevent form submission
                 alert('Güvenlik kodu yanlış.');
                 setCaptcha(); // Change the captcha
