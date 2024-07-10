@@ -7,23 +7,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Controllers
 {
-    public class logincontroller : Controller
+    public class LoginController : Controller
     {
-        private readonly appdbcontext _context;
+        private readonly AppDbContext _context;
 
-        public logincontroller(appdbcontext context)
+        public LoginController(AppDbContext context)
         {
             _context = context;
         }
 
         [HttpGet]
-        public IActionResult login()
+        public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> login(personel model)
+        public async Task<IActionResult> Login(personel model)
         {
             if (ModelState.IsValid)
             {
@@ -32,18 +32,18 @@ namespace WebApplication1.Controllers
 
                 if (user != null)
                 {
-                    // نجاح تسجيل الدخول
-                    return RedirectToAction("success");
+                    // Successful login
+                    return RedirectToAction("Success");
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "اسم المستخدم أو كلمة المرور غير صحيحة");
+                    ModelState.AddModelError(string.Empty, "Incorrect username or password");
                 }
             }
             return View(model);
         }
 
-        public IActionResult success()
+        public IActionResult Success()
         {
             return View();
         }

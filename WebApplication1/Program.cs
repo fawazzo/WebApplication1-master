@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApplication1.data; // تأكد من أن هذا النطاق يتطابق مع النطاق الفعلي لـ AppDbContext
+using WebApplication1.data;
 
 var builder = WebApplication.CreateBuilder(args);
 
