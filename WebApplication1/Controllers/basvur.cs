@@ -2,7 +2,7 @@
 
 namespace WebApplication1.Controllers
 {
-    public class basvur : Controller
+    public class Basvur : Controller
     {
         public IActionResult Index()
         {
