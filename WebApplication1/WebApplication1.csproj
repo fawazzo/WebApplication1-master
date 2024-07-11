@@ -8,14 +8,12 @@
 
   <ItemGroup>
     <Content Remove="Views\Home\login.cshtml" />
-    <Content Remove="Views\Login\sifre.cshtml" />
-    <Content Remove="Views\Login\yenleme.cshtml" />
+    <Content Remove="Views\Basvur\sifre.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Login\login.cshtml" />
-    <None Include="Views\Login\sifre.cshtml" />
-    <None Include="Views\Login\yenleme.cshtml" />
+    <None Include="Views\Basvur\Basvur.cshtml" />
+    <None Include="Views\Basvur\sifre.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
